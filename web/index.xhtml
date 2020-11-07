@@ -29,7 +29,7 @@
     <h:body rendered="#{sessionScope['username'] != 'temp'}">
         <nav style="background-color: black;" class="navbar navbar-expand navbar-light static-top">
             <h:form style="margin: auto">
-            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{usuariosMBean.logout}" value="Cerrar sesión"></h:commandLink></p>
+            <h4 style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{usuariosMBean.logout}" value="Cerrar sesión"></h:commandLink></h4>
             </h:form>            
         </nav>
         <br></br><br></br>

@@ -7,16 +7,13 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-    <h:head>
+    <h:head>        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>CUENTA</title>
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        
+        <title>Cuenta</title>
         <script>
             
             function limpiar()
@@ -30,20 +27,15 @@
     </h:head>
 
     <h:body>
-        <nav style="background-color:#000001 " class="navbar navbar-expand navbar-light static-top">
-            
-            <h:form style="margin-left: 42%">
+        <nav style="background-color: black" class="navbar navbar-expand navbar-light static-top">            
+        <hr></hr>
+        <h3 style="color: white">Crear Nueva Cuenta</h3>
             <hr></hr>
-            <p style="color:white; font-weight: bold; font-size: 20px;"> BIENVENIDOS | <h:commandLink style="color:white" action="#{usuariosMBean.logout()}" value="Login"></h:commandLink></p> 
-            <hr></hr>
-            </h:form>
-            
         </nav>
-
         <center>
-            <h2>Crear Nueva Cuenta</h2><hr></hr>
-            
-            <div style="width: 20%">
+            <br></br>
+            <br></br>
+            <div style="width: 30%">
                 <h:form id="myForm" class="form-group">
                     ID Usuario : <h:inputText class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
                     Usuario : <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
@@ -51,7 +43,8 @@
                     Nivel : <h:inputText a:value="Simple Usuario" readonly="#{facesContext.renderResponse}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
                     <br></br><br></br>
                     <h:commandButton class="btn btn-primary" action="#{usuariosMBean.agregar()}" value="Crear"></h:commandButton>
-                    <h:commandButton class="btn btn-danger" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                    <h:commandButton class="btn btn-warning" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                    <h:commandLink class="btn btn-secondary" action="#{usuariosMBean.logout()}" value="Regresar a Login"></h:commandLink>
                 </h:form>
             </div>
         </center>
