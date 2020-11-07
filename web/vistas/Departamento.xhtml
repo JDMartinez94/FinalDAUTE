@@ -39,10 +39,14 @@
         <ul class="sidebar navbar-nav bg-dark" style="height: 100%; font-size: 20px">
         <br></br>        
         <br></br>
+        <h:form>
         <a href="#{request.contextPath}/faces/vistas/Departamento.xhtml" class="badge badge-dark"><li>Departamentos</li></a>
         <a href="#{request.contextPath}/faces/vistas/Empleados.xhtml" class="badge badge-dark"><li>Empleados</li></a>
-        <a href="#{request.contextPath}/faces/vistas/Telefono.xhtml" class="badge badge-dark"><li>Telefonos</li></a>
-        <a href="#{request.contextPath}/faces/vistas/Usuarios.xhtml" class="badge badge-dark"><li>Usuarios</li></a>
+        <a href="#{request.contextPath}/faces/vistas/Telefono.xhtml" class="badge badge-dark"><li>Telefonos</li></a>        
+        <h:outputLink rendered="#{sessionScope['level'] != 'Simple Usuario'}" 
+                    value="#{request.contextPath}/faces/vistas/Usuarios.xhtml" class="badge badge-dark">
+                    <li>Usuarios</li></h:outputLink >
+        </h:form>
     </ul>
     </div>
 <div style="width: 90%; text-align: center">
@@ -69,6 +73,10 @@
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-secondary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
             </div>
+<hr>
+    <h4>Contenido de la tabla Departamentos</h4>
+<br></br>
+</hr>
 
             <h:dataTable class="table table-hover table-dark" value="#{departamentosMBean.tabla}" var="dept">
                     <h:column>
@@ -94,7 +102,7 @@
                     <h:column>
                         <f:facet name="header">SELECCIONAR</f:facet>
                         <a href="javascript:cargar('#{dept.idDepartamento}','#{dept.nombreDepto}','#{dept.cantEmpleados}','#{dept.codTels.codTels}')">
-                        <img src="recursos/edit.png" height="20px" /></a>
+                        <center><img src="recursos/edit.png" height="20px" /></center></a>
                     </h:column>
                 </h:dataTable>
             

@@ -34,46 +34,25 @@
         </script>
     </h:head>
 
-    <h:body rendered="#{sessionScope['username'] != 'temp'}">
-        <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
+<h:body rendered="#{sessionScope['username'] != 'temp'}">
+        <nav style="background-color: black " class="navbar navbar-expand navbar-light static-top">
             
-            <h:form style="margin-left: 35%">
-            <hr></hr>
-            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink  style="color:white" action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p> 
-            <hr></hr>
-            </h:form>
-            
+            <h:form style="margin-left: 35%">            
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink  style="color:white" action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p>             
+            </h:form>            
         </nav>
 
         <center>
-            <h:form><h2>Actualizar Credenciales</h2></h:form><hr></hr>
+            <h:form><h3>Actualizar Credenciales</h3></h:form><hr></hr>
             
-            <div style="width: 35%">
-                <h:form id="myForm" class="form-group">
-                    <h:outputLabel for="id">ID Usuario</h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
-                    <h:outputLabel for="us">Usuario:</h:outputLabel> <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
-                    <h:outputLabel for="pw">Contraseña:</h:outputLabel> <h:inputSecret  class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret><br></br>
-                    <h:outputLabel for="id">Nivel: </h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
-                    <br></br><br></br>
-                    
-                    <h:commandButton class="btn btn-info" action="#{usuariosMBean.modificar()}" value="Modificar"></h:commandButton><br></br><br></br>
-                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
-                </h:form>
-            </div>
+            <h4>Informacion actual de su usuario</h4>                        
             
-            
-            <hr></hr>
-            <h4 style="color:orangered">Contenido de Tabla Departamentos</h4>
-            <hr></hr>
-
-            
-            <div style="width: 700px; position: relative;">
-                <h:dataTable class="table table-dark" value="#{usuariosMBean.find()}" var="user">
+            <div style="width: 500px; position: relative;">
+                <h:dataTable class="table table-hover table-dark" value="#{usuariosMBean.find()}" var="user">
                     <h:column>
                         <f:facet name="header">ID USUARIO</f:facet>
                         <h:outputText value="#{user.idusuario}"></h:outputText>
                     </h:column>
-
                     <h:column>
                         <f:facet name="header">USUARIO</f:facet>
                         <h:outputText value="#{user.usuario}"></h:outputText>
@@ -91,12 +70,23 @@
 
                     <h:column>
                         <f:facet name="header">SELECCIONAR</f:facet>
-                        <a href="javascript:cargar('#{user.idusuario}','#{user.usuario}','#{user.contra}','#{user.nivel}')">Get</a>
+                        <a href="javascript:cargar('#{user.idusuario}','#{user.usuario}','#{user.contra}','#{user.nivel}')">
+                        <center><img src="recursos/edit.png" height="20px" /></center></a>
                     </h:column>
                 </h:dataTable>
+            </div>            
+            <div style="width: 35%">
+                <h:form id="myForm" class="form-group">
+                    <h:outputLabel for="id">ID Usuario</h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
+                    <h:outputLabel for="us">Usuario:</h:outputLabel> <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
+                    <h:outputLabel for="pw">Contraseña:</h:outputLabel> <h:inputText  class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputText><br></br>
+                    <h:outputLabel for="id">Nivel: </h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
+                    <br></br>
+                    
+                    <h:commandButton class="btn btn-info" action="#{usuariosMBean.modificar()}" value="Modificar"></h:commandButton> -
+                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                </h:form>
             </div>
         </center>
-
     </h:body>
-
 </html>

@@ -38,10 +38,14 @@
         <ul class="sidebar navbar-nav bg-dark" style="height: 100%; font-size: 20px">
         <br></br>        
         <br></br>
+        <h:form>
         <a href="#{request.contextPath}/faces/vistas/Departamento.xhtml" class="badge badge-dark"><li>Departamentos</li></a>
         <a href="#{request.contextPath}/faces/vistas/Empleados.xhtml" class="badge badge-dark"><li>Empleados</li></a>
-        <a href="#{request.contextPath}/faces/vistas/Telefono.xhtml" class="badge badge-dark"><li>Telefonos</li></a>
-        <a href="#{request.contextPath}/faces/vistas/Usuarios.xhtml" class="badge badge-dark"><li>Usuarios</li></a>
+        <a href="#{request.contextPath}/faces/vistas/Telefono.xhtml" class="badge badge-dark"><li>Telefonos</li></a>        
+        <h:outputLink rendered="#{sessionScope['level'] != 'Simple Usuario'}" 
+                    value="#{request.contextPath}/faces/vistas/Usuarios.xhtml" class="badge badge-dark">
+                    <li>Usuarios</li></h:outputLink >
+        </h:form>
     </ul>
     </div>
 <div style="width: 90%; text-align: center">
@@ -58,7 +62,7 @@
                 <h:form id="myForm" class="form-group">
                     <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">ID Usuario</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
                     <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="us">Usuario:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
-                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="pw">Contraseña:</h:outputLabel> <h:inputSecret rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret><br></br>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="pw">Contraseña:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputText><br></br>
                     <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">Nivel: </h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
                     <br></br><br></br>
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-success" action="#{usuariosMBean.agregar()}" value="Agregar"></h:commandButton>
@@ -66,12 +70,14 @@
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-danger" action="#{usuariosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
-            </div>
+            </div>                       
+                 
+<hr>
+    <h4>Contenido de la tabla Usuarios</h4>
+<br></br>
+</hr>
             
-            
-                       
-            <div style="width: 100%; position: relative;">
-                <h:dataTable class="table table-dark" value="#{usuariosMBean.tabla}" var="user">
+                <h:dataTable class="table table-hover table-dark" value="#{usuariosMBean.tabla}" var="user">
                     <h:column>
                         <f:facet name="header">ID USUARIO</f:facet>
                         <h:outputText value="#{user.idusuario}"></h:outputText>
@@ -94,10 +100,10 @@
 
                     <h:column>
                         <f:facet name="header">SELECCIONAR</f:facet>
-                        <a href="javascript:cargar('#{user.idusuario}','#{user.usuario}','#{user.contra}','#{user.nivel}')"><img src="recursos/edit.png" height="20px" /></a>
+                        <a href="javascript:cargar('#{user.idusuario}','#{user.usuario}','#{user.contra}','#{user.nivel}')">
+                            <img src="recursos/edit.png" height="20px" /></a>
                     </h:column>
-                </h:dataTable>
-            </div>
+                </h:dataTable>            
         </center>
 </div>        
 </div>

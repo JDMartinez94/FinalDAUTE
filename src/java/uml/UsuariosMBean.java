@@ -172,7 +172,6 @@ public class UsuariosMBean {
                         session.setAttribute("username", uss);
                         session.setAttribute("level", niv);
                         session.setAttribute("iduser", idus);
-                        //FacesContext.getCurrentInstance().getExternalContext().dispatch("../index.xhtml");
                         return "admin"; 
                     }
                     else

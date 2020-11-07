@@ -27,46 +27,35 @@
         </script>
     </h:head>
     <h:body rendered="#{sessionScope['username'] != 'temp'}">
-        <nav style="background-color:#000000" class="navbar navbar-expand navbar-light static-top">
-            <h:form style="margin-left: 35%">
-            <hr></hr>
-            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{usuariosMBean.logout}" value="Cerrar sesión"></h:commandLink></p> 
-            <hr></hr>
-            </h:form>
-            
+        <nav style="background-color: black;" class="navbar navbar-expand navbar-light static-top">
+            <h:form style="margin: auto">
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{usuariosMBean.logout}" value="Cerrar sesión"></h:commandLink></p>
+            </h:form>            
         </nav>
-        
         <br></br><br></br>
-        <center> <h3 style="margin-left: 20px">BIENVENIDO A PANTALLA DE REPORTES</h3> </center>
+        <center> <h3 style="margin-left: 20px">Seleccione el reporte que desea ver</h3> </center>
          <hr></hr>
          
          <h:form>
-                  <br></br>        
-        <br></br>  
         <center> 
        <br></br>
-            <h:commandLink style="center: 5%" class="btn btn-success" action="#{departamentosMBean.sesion}" value="CRUD DEPARTAMENTO"></h:commandLink><br></br>
+            <h:commandLink style="center: 5%; width: 250px" class="btn btn-success" action="#{departamentosMBean.sesion}" value="REPORTE DEPARTAMENTO"></h:commandLink><br></br>
              <br></br>
-            <h:commandLink style="center: 5%" class="btn btn-info" action="#{empleadoMBean.sesion}" value="CRUD EMPLEADO"></h:commandLink><br></br>
+            <h:commandLink style="center: 5%; width: 250px" class="btn btn-info" action="#{empleadoMBean.sesion}" value="REPORTE EMPLEADO"></h:commandLink><br></br>
         <br></br>
-            <h:commandLink style="center: 5%" class="btn btn-warning" action="#{telefonoMBean.sesion}" value="CRUD TELEFONOS"></h:commandLink><br></br>      
+            <h:commandLink style="center: 5%; width: 250px" class="btn btn-warning" action="#{telefonoMBean.sesion}" value="REPORTE TELEFONOS"></h:commandLink><br></br>      
         <br></br>
-            <h:commandLink  rendered="#{sessionScope['level'] != 'Simple Usuario'}" style="margin-left: 0%" class="btn btn-primary" action="#{usuariosMBean.sesion()}" value="CRUD USUARIOS"></h:commandLink><br></br>
-             <br></br>        
+            <h:commandLink  rendered="#{sessionScope['level'] != 'Simple Usuario'}" style="margin-left: 0%; width: 250px" class="btn btn-secondary" action="#{usuariosMBean.sesion()}" value="REPORTE USUARIOS"></h:commandLink><br></br>               
                 
-       
-        </center> 
-            <br></br>        
-        <br></br>
-            <br></br><br></br>
-           
-            <h:outputText style="margin-left: 40%" value="Deseas cambiar Contraseña      "></h:outputText>
-            <h:commandLink value="Click Aqui!!" action="#{usuariosMBean.sesion1()}"></h:commandLink>
-           
-        
-        </h:form> 
+       </center> 
+       <br></br>
+       <h:outputText style="margin-left: 40%" value="Deseas cambiar Contraseña      "></h:outputText>
+       <h:commandLink value="Click Aqui!!" action="#{usuariosMBean.sesion1()}"></h:commandLink>
+       </h:form> 
          
     </h:body>
+    <br></br>
+    <br></br>
     <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">

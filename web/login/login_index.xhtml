@@ -5,43 +5,41 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
 <h:head>
-	<title>LOGIN</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+        <title>Login</title>
 </h:head>
-<h:body>
+<h:body class="bg-dark">
+<div class="container">
     
-    <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
-         
-        <h:form style="margin-left: 32%">
-        <hr></hr>
-        <p style="color:white; font-weight: bold; font-size: 20px;"> BIENVENIDOS A SU SISTEMA DE MANTENIMIENTO </p> 
-        <hr></hr>
-        </h:form>
-            
-    </nav>
-    
-        <div style="width: 700px; position: relative; margin-left: 40%">
-	<h:form style="width: 35%" id="myForm" class="form-group">
-		<h:outputText value="Username: " />
+        <div class="card card-login mx-auto mt-5" style="width: 400px">
+        <div class="card-header">Ingresar al sistema</div>      
+        <div class="card-body">
+        <h:form>
+        <div class="form-group">            
+        <div class="form-label-group">
+            <label for="inputEmail">Usuario</label>
                 <h:inputText class="form-control" id="username" value="#{usuariosMBean.usuario}"></h:inputText>
 		<h:message for="username"></h:message>
-		<br></br><br></br>
-		
-		<h:outputText value="Password: " />
+            </div>
+          </div>
+          
+        <div class="form-group">
+
+        <div class="form-label-group">
+            <label for="inputPassword">Contraseña</label>
                 <h:inputSecret class="form-control" id="password" value="#{usuariosMBean.contra}"></h:inputSecret>
 		<h:message for="password"></h:message>
-		<br></br><br></br>
-		
-                <h:commandButton class="btn btn-success" id="btnIngresar" action="#{usuariosMBean.validateUsernamePassword}" value="Login"></h:commandButton>
-                <br></br><br></br>
-                <h:outputText value="¿No tienes cuenta?"></h:outputText>
-                <h:commandLink value="Crear" action="#{usuariosMBean.sestemp()}"></h:commandLink>
-	</h:form>
-        </div>
-    
+            </div>
+          </div>        
+                <h:commandButton class="btn btn-primary btn-block" id="btnIngresar" action="#{usuariosMBean.validateUsernamePassword}" value="Login"></h:commandButton>        
+        <br></br>
+        <h:commandLink class="btn btn-secondary btn-block" value="Crear una cuenta" action="#{usuariosMBean.sestemp()}"></h:commandLink>
+        </h:form>
+      </div>        
+    </div>
+  </div>
 </h:body>
 </html>
